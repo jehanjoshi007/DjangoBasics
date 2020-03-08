@@ -1,0 +1,61 @@
+{% extends 'custmanager/main.html' %}
+
+{% block content %}
+{% include 'custmanager/status.html' %}
+<br>
+<div class="row">
+  <div class="col-md-5">
+    <h5>Customers</h5>
+    <hr>
+    <div class="card card-body">
+      <a class="btn btn-primary btn-sm btn-block" href="">Create Customer</a>
+      <table class="table table-sm">
+        <tr>
+          <th></th>
+          <th>Customers</th>
+          <th>Orders</th>
+        </tr>
+
+      </table>
+
+    </div>
+  </div>
+
+
+
+
+  <div class="col-md-7">
+    <h5>Last 5 Orders</h5>
+    <hr>
+    <div class="card card-body">
+      <a class="btn btn-primary btn-sm btn-block" href="">Create Order</a>
+      <table class="table table-sm">
+        <th>PO Number</th>
+        <th>Customer Name</th>
+        <th>Line Number</th>
+        <th>Product</th>
+        <th>Date Recieved</th>
+        <th>Status</th>
+        <th>Update</th>
+        <th>Remove</th>
+        {% for i in cust_orders %}
+        <tr>
+          <td>{{i.ponumber}}</td>
+          <td>{{i.customer}}</td>
+          <td>{{i.linenumber}}</td>
+          <td>{{i.product}}</td>
+          <td>{{i.date_created}}</td>
+        </tr>
+        {% endfor %}
+
+      </table>
+
+    </div>
+
+  </div>
+
+
+
+
+
+{% endblock %}
