@@ -2,8 +2,8 @@ from django.db import models
 
 # Create your models here.
 class Customer(models.Model):
-    name = models.CharField(max_length=200, null=True)
-    email = models.CharField(max_length=200, null=True)
+    name = models.CharField(max_length=200, null=True,unique=True)
+    email = models.CharField(max_length=200, null=True,unique=True)
     phone = models.CharField(max_length=200,null=True)
     state = models.CharField(max_length=200, null=True)
     city = models.CharField(max_length=200, null=True)
