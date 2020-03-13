@@ -13,8 +13,21 @@
         <tr>
           <th></th>
           <th>Customers</th>
-          <th>Orders</th>
+          <th>Contact</th>
         </tr>
+
+
+
+
+        {% for cust in customers%}
+        <tr>
+          <td><a class="btn btn-sm btn-info" href="{% url 'customer' cust.id %}">View</a></td>
+        <td>{{cust.name}}</td>
+        <td>{{cust.phone}}</td>
+
+        </tr>
+
+        {% endfor %}
 
       </table>
 
@@ -46,8 +59,8 @@
           <td>{{i.product}}</td>
           <td>{{i.date_created}}</td>
           <td>{{i.status}}</td>
-          <td><a href="">Update</a></td>
-          <td><a href="">Delete</a></td>
+          <td><a class="btn btn-sm btn-info" href="">Update</a></td>
+          <td><a class="btn btn-sm btn-danger" href="">Delete</a></td>
         </tr>
         {% endfor %}
 
