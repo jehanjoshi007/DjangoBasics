@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'custmanager'
+    'custmanager',
+    'crispy_forms',
+    'django_filters',
 
 ]
 
