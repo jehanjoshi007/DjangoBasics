@@ -1,0 +1,50 @@
+{% extends 'custmanager/main.html'%}
+{% load static %}
+{% block content %}
+
+<br>
+
+<div class="row">
+  <div class="col-lg-9">
+    <div class="card card-body">
+
+
+              <form action="" method="post">
+                {% csrf_token %}
+                <table class="table table-bordered">
+
+
+                <th>PO Number</th>
+                <th>Customer Name</th>
+                <th>Line Number</th>
+                <th>Product</th>
+
+                <tr>
+                  <td>{{form.ponumber}}</td>
+                  <td>{{form.customer}}</td>
+                  <td>{{form.linenumber}}</td>
+                  <td>{{form.product}}</td>
+                  </tr>
+                  <tr>
+                    <th>Price</th>
+                    <th>Qty Y2</th>
+                    <th>Qty Rolls</th>
+                    <th>Status</th>
+                    </tr>
+
+                    <tr>
+                  <td>{{form.price}}</td>
+                  <td>{{form.QuantityY2}}</td>
+                  <td>{{form.QuantityRolls}}</td>
+                  <td>{{form.status}}</td>
+                  </tr>
+                  </table>
+                
+              <input class="btn btn-info" type="submit" name="Submit">
+
+              </form>
+      </div>
+    </div>
+</div>
+
+{% endblock %}

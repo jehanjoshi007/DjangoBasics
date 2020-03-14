@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import *
 from django.db.models import Count
+from .forms import *
 # Create your views here.
 
 #Always remember this folder structure to render templates
@@ -34,3 +35,34 @@ def customer(request,pk):
     po_count = Order.objects.values('ponumber').order_by().annotate(Count('ponumber',distinct=True))
     context = {'customer':customer,'orders':orders,'po_count':po_count}
     return render(request, 'custmanager/customer.html',context)
+
+def createOrder(request):
+    form = OrderForm()
+    if request.method == 'POST':
+        #print(request.POST)
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    context = {'form':form}
+    return render(request, 'custmanager/order_form.html',context)
+
+def updateOrder(request,pk):
+    order = Order.objects.get(id=pk)
+    form = OrderForm(instance=order)
+    if request.method == 'POST':
+        #print(request.POST)
+        form = OrderForm(request.POST,instance=order)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    context = {'form':form}
+    return render(request, 'custmanager/order_form.html',context)
+
+def deleteOrder(request,pk):
+    order = Order.objects.get(id=pk)
+    if request.method == 'POST':
+        order.delete()
+        return redirect('/')
+    context = {'item':order}
+    return render(request,'custmanager/delete.html',context)
